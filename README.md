@@ -2,7 +2,7 @@
 
 Uma aplicação web simples, intuitiva e responsiva para conversão de moedas em tempo real, desenvolvida como projeto de estudo de desenvolvimento web.
 
-![Convert Money](https://raw.githubusercontent.com/seu-usuario/seu-repositorio/main/preview.png) *(Substitua com a URL da imagem de preview se desejar)*
+<img src="assets/foto-projeto.png" alt="Logo do Projeto" width="400" height="600">
 
 ---
 
