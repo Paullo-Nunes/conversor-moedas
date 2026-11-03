@@ -48,4 +48,4 @@ Você pode testar a aplicação em funcionamento através do link:
 
 1. **Clone este repositório:**
    ```bash
-   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+   git clone [https://github.com/Paullo-Nunes/conversor-moedas-devclub](https://github.com/Paullo-Nunes/conversor-moedas-devclub)
