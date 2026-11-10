@@ -1,33 +1,30 @@
 const convertButton = document.querySelector(".convert-button")
 const moedaSelecionada = document.getElementById("moeda-selecionada")
 
-function convertValues() {
+async function convertValues() {
     const valorInicial = document.querySelector(".valor-moeda").value
 
     const valorParaConverter = document.querySelector(".moeda-entrada") //moeda Real
 
     const valorConvertido = document.querySelector(".moeda-saida") //outras moedas
 
-    const dolarToday = 5.5
-    const euroToday = 6.16
-    const libraToday = 7.38
-    const bitcoinToday = 426.898
-    // console.log(moedaSelecionada.value)
+    //Fazendo a requisição para a API de cotação de moedas
 
-    // const convertValor = valorInicial / dolarToday
+    const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,GBP-BRL,BTC-BRL").then(response => response.json());
+
 
     if (moedaSelecionada.value == "Dolar") {
         valorConvertido.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD"
-        }).format(valorInicial / dolarToday)
+        }).format(valorInicial / data.USDBRL.bid)
     }
 
     if (moedaSelecionada.value == "Euro") {
         valorConvertido.innerHTML = new Intl.NumberFormat("de-DE", {
             style: "currency",
             currency: "EUR"
-        }).format(valorInicial / euroToday)
+        }).format(valorInicial / data.EURBRL.bid)
     }
 
     if (moedaSelecionada.value == "Libra") {
@@ -35,7 +32,7 @@ function convertValues() {
             style: "currency",
             currency: "GBP"
 
-        }).format(valorInicial / libraToday)
+        }).format(valorInicial / data.GBPBRL.bid)
 
     }
 
@@ -44,7 +41,7 @@ function convertValues() {
             style: "currency",
             currency: "BRL"
 
-        }).format(valorInicial / bitcoinToday)
+        }).format(valorInicial / data.BTCBRL.bid)
 
     }
     //Ferramenta de conversão de moedas do javascript "Intel.NumberFormat" ler documentação
