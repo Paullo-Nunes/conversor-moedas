@@ -11,7 +11,7 @@ async function convertValues() {
     //Fazendo a requisição para a API de cotação de moedas
 
     const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,GBP-BRL,BTC-BRL").then(response => response.json());
-
+    
 
     if (moedaSelecionada.value == "Dolar") {
         valorConvertido.innerHTML = new Intl.NumberFormat("en-US", {
