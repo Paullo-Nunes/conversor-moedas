@@ -2,11 +2,21 @@ const convertButton = document.querySelector(".convert-button")
 const moedaSelecionada = document.getElementById("moeda-selecionada")
 
 async function convertValues() {
-    const valorInicial = document.querySelector(".valor-moeda").value
+    const valorInformado = document.querySelector(".valor-moeda").value
+        .trim()
+        .replace(/^R\$\s*/i, "")
+        .replace(/\./g, "")
+        .replace(",", ".")
+    const valorInicial = Number(valorInformado)
 
     const valorParaConverter = document.querySelector(".moeda-entrada") //moeda Real
 
     const valorConvertido = document.querySelector(".moeda-saida") //outras moedas
+
+    if (!Number.isFinite(valorInicial) || valorInicial <= 0) {
+        alert("Digite um valor válido em reais, por exemplo: 10.000,00.")
+        return
+    }
 
     //Fazendo a requisição para a API de cotação de moedas
 
@@ -37,15 +47,13 @@ async function convertValues() {
     }
 
     if (moedaSelecionada.value == "Bitcoin") {
-        valorConvertido.innerHTML = new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL"
-
-        }).format(valorInicial / data.BTCBRL.bid)
-
+        const quantidadeBitcoin = valorInicial / data.BTCBRL.bid
+        valorConvertido.textContent = `${new Intl.NumberFormat("pt-BR", {
+            maximumFractionDigits: 8
+        }).format(quantidadeBitcoin)} BTC`
     }
     //Ferramenta de conversão de moedas do javascript "Intel.NumberFormat" ler documentação
-    valorParaConverter.innerHTML = new Intl.NumberFormat("pt-BR", {
+    valorParaConverter.textContent = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
     }).format(valorInicial)
