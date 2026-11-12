@@ -4,9 +4,9 @@ const moedaSelecionada = document.getElementById("moeda-selecionada")
 async function convertValues() {
     const valorInformado = document.querySelector(".valor-moeda").value
         .trim()
-        .replace(/^R\$\s*/i, "")
-        .replace(/\./g, "")
-        .replace(",", ".")
+        .replace(/^R\$\s*/i, "") //removendo o símbolo de real e espaços em branco
+        .replace(/\./g, "") //removendo os pontos do valor informado
+        .replace(",", ".") //substituindo a vírgula por ponto para conversão em número
     const valorInicial = Number(valorInformado)
 
     const valorParaConverter = document.querySelector(".moeda-entrada") //moeda Real
